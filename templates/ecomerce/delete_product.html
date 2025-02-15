@@ -1,0 +1,9 @@
+<!-- product_confirm_delete.html -->
+<h2>Вы уверены, что хотите удалить этот продукт?</h2>
+<p>Продукт: {{ product.name }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'ecomerce:product_detail' pk=product.pk %}">Отмена</a>
+</form>

@@ -1,0 +1,8 @@
+<h2>Izoxlar</h2>
+<ul>
+    {% for review in reviews %}
+        <li>
+            <strong>{{ review.name }}</strong> ({{ review.email }}): {{ review.review }}
+        </li>
+    {% endfor %}
+</ul>
