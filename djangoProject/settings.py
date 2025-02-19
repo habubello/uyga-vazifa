@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
-
+from dotenv import load_dotenv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o6kk8!(fl$k5jdln6hi!3ris6zc9i9a!d96tdn=7m91tab=vdk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 # Application definition
 
@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'forjango',
+        'NAME': 'forjango_utf8',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': "1234",
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '5432',
     }
 }
 
@@ -139,3 +139,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 AUTH_USER_MODEL = 'user.User'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP server host
+EMAIL_PORT = 587  # SMTP server port (587 for TLS, 465 for SSL)
+EMAIL_USE_TLS = True  # True for TLS, False for SSL
+EMAIL_HOST_USER = 'aaa777aaa777@gmail.com'  # SMTP server username
+EMAIL_HOST_PASSWORD = 'hbeq pnug scyu kfyf'  # SMTP server password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

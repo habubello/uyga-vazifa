@@ -1,6 +1,9 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
+
+{% load static %}
+    <link href="{% static 'user/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/user.min.css' %}">
 
 <head>
     <meta charset="utf-8">
@@ -17,15 +20,15 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'user/assets/img/favicons/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'user/assets/img/favicons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'user/assets/img/favicons/favicon-16x16.png' %}">
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'user/assets/img/favicons/favicon.ico' %}">
-    <link rel="manifest" href="{% static 'user/assets/img/favicons/manifest.json' %}">
-    <meta name="msapplication-TileImage" content="{% static 'user/assets/img/favicons/mstile-150x150.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'user/img/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'user/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'user/img/favicons/favicon-16x16.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'user/img/favicons/favicon.ico' %}">
+    <link rel="manifest" href="{% static 'user/img/favicons/manifest.json' %}">
+    <meta name="msapplication-TileImage" content="{% static 'user/img/favicons/mstile-150x150.png' %}">
     <meta name="theme-color" content="#ffffff">
-    <script src="{% static 'user/assets/js/config.js' %}"></script>
-    <script src="{% static 'user/vendors/overlayscrollbars/OverlayScrollbars.min.js' %}"></script>
+    <script src="{% static 'user/js/config.js' %}"></script>
+    <script src="{% static 'user/overlayscrollbars/OverlayScrollbars.min.js' %}"></script>
 
 
     <!-- ===============================================-->
@@ -34,11 +37,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700%7cPoppins:300,400,500,600,700,800,900&amp;display=swap"
           rel="stylesheet">
-    <link href="{% static 'user/vendors/overlayscrollbars/OverlayScrollbars.min.css' %}" rel="stylesheet">
-    <link href="{% static 'user/assets/css/theme-rtl.min.css' %}" rel="stylesheet" id="style-rtl">
-    <link href="{% static 'user/assets/css/theme.min.css' %}" rel="stylesheet" id="style-default">
-    <link href="{% static 'user/assets/css/user-rtl.min.css' %}" rel="stylesheet" id="user-style-rtl">
-    <link href="{% static 'user/assets/css/user.min.css' %}" rel="stylesheet" id="user-style-default">
+    <link href="{% static 'user/overlayscrollbars/OverlayScrollbars.min.css' %}" rel="stylesheet">
+    <link href="{% static 'user/css/theme-rtl.min.css' %}" rel="stylesheet" id="style-rtl">
+    <link href="{% static 'user/css/theme.min.css' %}" rel="stylesheet" id="style-default">
+    <link href="{% static 'user/css/user-rtl.min.css' %}" rel="stylesheet" id="user-style-rtl">
+    <link href="{% static 'user/css/user.min.css' %}" rel="stylesheet" id="user-style-default">
     <script>
         var isRTL = JSON.parse(localStorage.getItem('isRTL'));
         if (isRTL) {
@@ -66,17 +69,17 @@
     <div class="container-fluid">
         <div class="row min-vh-100 flex-center g-0">
             <div class="col-lg-8 col-xxl-5 py-3 position-relative"><img class="bg-auth-circle-shape"
-                                                                        src="{% static 'user/assets/img/icons/spot-illustrations/bg-shape.png' %}"
+                                                                        src="{% static 'user/img/icons/spot-illustrations/bg-shape.png' %}"
                                                                         alt="" width="250"><img
                     class="bg-auth-circle-shape-2"
-                    src="{% static 'user/assets/img/icons/spot-illustrations/shape-1.png' %}" alt="" width="150">
+                    src="{% static 'user/img/icons/spot-illustrations/shape-1.png' %}" alt="" width="150">
                 <div class="card overflow-hidden z-index-1">
                     <div class="card-body p-0">
                         <div class="row g-0 h-100">
                             <div class="col-md-5 text-center bg-card-gradient">
                                 <div class="position-relative p-4 pt-md-5 pb-md-7 light">
                                     <div class="bg-holder bg-auth-card-shape"
-                                         style="background-image:url({% static 'user/assets/img/icons/spot-illustrations/half-circle.png' %});">
+                                         style="background-image:url({% static 'user/img/icons/spot-illustrations/half-circle.png' %});">
                                     </div>
                                     <!--/.bg-holder-->
 
@@ -208,7 +211,7 @@
                            data-theme-control="theme"/>
                     <label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherLight"> <span
                             class="hover-overlay mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0"
-                                                                            src="{% static 'user/assets/img/generic/falcon-mode-default.jpg' %}"
+                                                                            src="{% static 'user/img/generic/falcon-mode-default.jpg' %}"
                                                                             alt=""/></span><span class="label-text">Light</span></label>
                 </div>
                 <div class="col-6">
@@ -216,7 +219,7 @@
                            data-theme-control="theme"/>
                     <label class="btn d-inline-block btn-navbar-style fs--1" for="themeSwitcherDark"> <span
                             class="hover-overlay mb-2 rounded d-block"><img class="img-fluid img-prototype mb-0"
-                                                                            src="{% static 'user/assets/img/generic/falcon-mode-dark.jpg' %}"
+                                                                            src="{% static 'user/img/generic/falcon-mode-dark.jpg' %}"
                                                                             alt=""/></span><span class="label-text"> Dark</span></label>
                 </div>
             </div>
@@ -224,7 +227,7 @@
         <hr/>
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-start"><img class="me-2"
-                                                       src="{% static 'user/assets/img/icons/left-arrow-from-left.svg' %}"
+                                                       src="{% static 'user/img/icons/left-arrow-from-left.svg' %}"
                                                        width="20" alt=""/>
                 <div class="flex-1">
                     <h5 class="fs-0">RTL Mode</h5>
@@ -240,7 +243,7 @@
         <hr/>
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-start"><img class="me-2"
-                                                       src="{% static 'user/assets/img/icons/arrows-h.svg' %}"
+                                                       src="{% static 'user/img/icons/arrows-h.svg' %}"
                                                        width="20" alt=""/>
                 <div class="flex-1">
                     <h5 class="fs-0">Fluid Layout</h5>
@@ -254,7 +257,7 @@
             </div>
         </div>
         <hr/>
-        <div class="d-flex align-items-start"><img class="me-2" src="{% static 'user/assets/img/icons/paragraph.svg' %}"
+        <div class="d-flex align-items-start"><img class="me-2" src="{% static 'user/img/icons/paragraph.svg' %}"
                                                    width="20" alt=""/>
             <div class="flex-1">
                 <h5 class="fs-0 d-flex align-items-center">Navigation Position </h5>
@@ -293,34 +296,34 @@
                     <input class="btn-check" id="navbar-style-transparent" type="radio" name="navbarStyle"
                            value="transparent" data-theme-control="navbarStyle"/>
                     <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-transparent"> <img
-                            class="img-fluid img-prototype" src="{% static 'user/assets/img/generic/default.png' %}"
+                            class="img-fluid img-prototype" src="{% static 'user/img/generic/default.png' %}"
                             alt=""/><span class="label-text"> Transparent</span></label>
                 </div>
                 <div class="col-6">
                     <input class="btn-check" id="navbar-style-inverted" type="radio" name="navbarStyle" value="inverted"
                            data-theme-control="navbarStyle"/>
                     <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-inverted"> <img
-                            class="img-fluid img-prototype" src="{% static 'user/assets/img/generic/inverted.png' %}"
+                            class="img-fluid img-prototype" src="{% static 'user/img/generic/inverted.png' %}"
                             alt=""/><span class="label-text"> Inverted</span></label>
                 </div>
                 <div class="col-6">
                     <input class="btn-check" id="navbar-style-card" type="radio" name="navbarStyle" value="card"
                            data-theme-control="navbarStyle"/>
                     <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-card"> <img
-                            class="img-fluid img-prototype" src="{% static 'user/assets/img/generic/card.png' %}"
+                            class="img-fluid img-prototype" src="{% static 'user/img/generic/card.png' %}"
                             alt=""/><span class="label-text"> Card</span></label>
                 </div>
                 <div class="col-6">
                     <input class="btn-check" id="navbar-style-vibrant" type="radio" name="navbarStyle" value="vibrant"
                            data-theme-control="navbarStyle"/>
                     <label class="btn d-block w-100 btn-navbar-style fs--1" for="navbar-style-vibrant"> <img
-                            class="img-fluid img-prototype" src="{% static 'user/assets/img/generic/vibrant.png' %}"
+                            class="img-fluid img-prototype" src="{% static 'user/img/generic/vibrant.png' %}"
                             alt=""/><span class="label-text"> Vibrant</span></label>
                 </div>
             </div>
         </div>
         <div class="text-center mt-5"><img class="mb-4"
-                                           src="{% static 'user/assets/img/icons/spot-illustrations/47.png' %}" alt=""
+                                           src="{% static 'user/img/icons/spot-illustrations/47.png' %}" alt=""
                                            width="120"/>
             <h5>Like What You See?</h5>
             <p class="fs--1">Get Falcon now and create beautiful dashboards with hundreds of widgets.</p><a
@@ -349,15 +352,15 @@
 <!-- ===============================================-->
 <!--    JavaScripts-->
 <!-- ===============================================-->
-<script src="{% static 'user/vendors/popper/popper.min.js' %}"></script>
-<script src="{% static 'user/vendors/bootstrap/bootstrap.min.js' %}"></script>
-<script src="{% static 'user/vendors/anchorjs/anchor.min.js' %}"></script>
-<script src="{% static 'user/vendors/is/is.min.js' %}"></script>
-<script src="{% static 'user/vendors/fontawesome/all.min.js' %}"></script>
-<script src="{% static 'user/vendors/lodash/lodash.min.js' %}"></script>
+<script src="{% static 'user/popper/popper.min.js' %}"></script>
+<script src="{% static 'user/bootstrap/bootstrap.min.js' %}"></script>
+<script src="{% static 'user/anchorjs/anchor.min.js' %}"></script>
+<script src="{% static 'user/is/is.min.js' %}"></script>
+<script src="{% static 'user/fontawesome/all.min.js' %}"></script>
+<script src="{% static 'user/lodash/lodash.min.js' %}"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-<script src="{% static 'user/vendors/list.js/list.min.js' %}"></script>
-<script src="{% static 'user/assets/js/theme.js' %}"></script>
+<script src="{% static 'user/list.js/list.min.js' %}"></script>
+<script src="{% static 'user/js/theme.js' %}"></script>
 
 </body>
 

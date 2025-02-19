@@ -1,10 +1,12 @@
 from django.core.paginator import Paginator
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DetailView
 
 import eccomerce
 from .models import Customer
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import ProductUpdateForm,ReviewForm
+from .forms import ProductUpdateForm,ReviewForm,Product
 from .models import Product, Review
 
 
@@ -96,3 +98,19 @@ def customers(request):
 def customer_details(request, customer_name):
     customer = get_object_or_404(Customer, name=customer_name)
     return render(request, 'ecomerce/customer-details.html', {'customer': customer})
+
+
+
+class CreateProduct(CreateView):
+    model = Product
+    template_name = 'ecomerce/product-list.html'
+    form_class = Product
+    success_url = reverse_lazy('eccomerce:product_list')
+
+
+class FoobarDetailView(DetailView):
+    template_name = 'ecomerce/product-list.html'
+    model = Product
+    context_object_name = 'product'
+    slug_field = 'product_id'
+    slug_url_kwarg = 'product_id'
