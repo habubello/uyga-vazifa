@@ -1,36 +1,27 @@
+import email.message
+from email.message import EmailMessage
+
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 from .models import Product, Review, Img, Customer
 
 
-@receiver(pre_save, sender=Product)
-def update_stock_status(sender, instance, **kwargs):
-    instance.stock = instance.quantity > 0
-
-
-@receiver(post_save, sender=Product)
-def log_product_save(sender, instance, created, **kwargs):
+def product_saved(sender, instance, created, **kwargs):
     if created:
-        print(f"Создан новый продукт: {instance.name}")
+        users = Customer.objects.all()
+        email_of_users = [user.email for user in users]
+        email = EmailMessage(
+            f'Product saved',
+            f'{instance.name.title()} successfully saved',
+            to=email_of_users
+        )
+        email.send()
+        print('Email sent')
+
     else:
-        print(f"Обновлён продукт: {instance.name}")
-
-
-@receiver(post_delete, sender=Product)
-def delete_product_images(sender, instance, **kwargs):
-    images = Img.objects.filter(product=instance)
-    for img in images:
-        img.image.delete(save=False)
-    images.delete()
-
-
-@receiver(post_save, sender=Review)
-def notify_new_review(sender, instance, created, **kwargs):
-    if created:
-        print(f"Новый отзыв на {instance.product.name} от {instance.name}: {instance.review}")
-
-
-@receiver(post_save, sender=Customer)
-def log_customer_creation(sender, instance, created, **kwargs):
-    if created:
-        print(f"Зарегистрирован новый клиент: {instance.name} ({instance.email})")
+        users = Customer.objects.all()
+        email_of_users = EmailMessage()
+        email = EmailMessage(
+            f'Product saved',
+            f'{instance.name.title()} sucsessfully savded'
+        )
