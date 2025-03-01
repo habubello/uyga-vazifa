@@ -49,6 +49,7 @@ class Product(BaseModel):
     quantity = models.PositiveIntegerField(default=1, null=True, blank=True)
     rating = models.PositiveIntegerField(choices=RatingChoice.choices, default=RatingChoice.ONE.value)
     likes = models.IntegerField(default=0)
+    stock = models.IntegerField()  # Убедитесь, что поле существует
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -66,9 +67,7 @@ class Product(BaseModel):
             new_price = Decimal(self.price) * Decimal((1 - self.discount / 100))
         return new_price.quantize(Decimal('0'))
 
-    @property
-    def in_stock(self):
-        return self.quantity > 0
+
 
     def __str__(self):
         return self.name

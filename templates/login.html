@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
 {% load socialaccount %}
+{{ provider_login_url }}
+
 <html lang="en-US" dir="ltr">
 <link rel="stylesheet" href="{% static 'fff/css/style.css' %}">
 <script src="{% static 'fff/js/config.js' %}"></script>
@@ -170,9 +172,8 @@
                                     </div>
                                     <div class="row g-2 mt-2">
                                         <div class="col-sm-6">
-    <a class="btn btn-outline-danger btn-sm d-block w-100" href="{% provider_login_url 'google' %}">
-        <span class="fab fa-google me-2" data-fa-transform="grow-8"></span> Google
-    </a>
+    <a href="{% url 'socialaccount_login' 'google' %}">Войти через Google</a>
+
 </div>
 
                                         <div class="col-sm-6"><a class="btn btn-outline-facebook btn-sm d-block w-100"

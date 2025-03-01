@@ -502,7 +502,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="../../../pages/user/settings.html">Settings</a>
                                 <a class="dropdown-item"
-                                   href="../../../pages/authentication/card/logout.html">Logout</a>
+                                   href="/user/login-oauth-page/">Logout</a>
                             </div>
                         </div>
                     </li>
@@ -528,10 +528,22 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-auto pe-0"><a class="text-600 px-1"
-                                                              href="../../../app/e-commerce/product/product-grid.html"
-                                                              data-bs-toggle="tooltip" title="Product Grid"><span
-                                        class="fas fa-th"></span></a></div>
+                                <form action="{% url 'eccomerce:export_data' %}">
+
+                            <select class="form-select" aria-label="Default select example" name="format">
+                                <option value="none" selected>...</option>
+                                <option value="json">Json</option>
+                                <option value="xlsx">XLSX</option>
+                                <option value="csv">CSV</option>
+                            </select>
+                            <button class="btn btn-falcon-default btn-sm" type="submit"><span
+                                    class="fas fa-external-link-alt"
+                                    data-fa-transform="shrink-3 down-2"></span><span
+                                    class="d-none d-sm-inline-block ms-1">Export</span>
+                            </button>
+
+                        </form>
+
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,11 @@
+import csv
+import json
+
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from .models import Product, Review, Customer
 from .forms import ProductUpdateForm, ReviewForm
@@ -102,3 +105,29 @@ class FoobarDetailView(DetailView):
     context_object_name = 'product'
     slug_field = 'slug'
     slug_url_kwarg = 'slug'
+
+
+def export_data(request):
+    format = request.GET.get('format', '')
+    response = None
+    if format == 'csv':
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=customer_list.csv'
+        writer = csv.writer(response)
+        writer.writerow(['Id', 'Full Name', 'Email', 'Phone Number', 'Address'])
+        for customer in Customer.objects.all():
+            writer.writerow([customer.id, customer.full_name, customer.email, customer.phone_number, customer.address])
+    elif format == 'json':
+        response = HttpResponse(content_type='application/json')
+        data = list(Customer.objects.all().values('name', 'email', 'address'))
+        # for customer in data:
+        #     customer['phone_number'] = str(customer['phone_number'])
+        response.write(json.dumps(data, indent=3))
+        response['Content-Disposition'] = 'attachment; filename=customers.json'
+    elif format == 'xlsx':
+        pass
+    else:
+        response = HttpResponse(status=404)
+        response.content = 'Bad request'
+
+    return response
