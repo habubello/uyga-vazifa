@@ -114,9 +114,9 @@ def export_data(request):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename=customer_list.csv'
         writer = csv.writer(response)
-        writer.writerow(['Id', 'Full Name', 'Email', 'Phone Number', 'Address'])
+        writer.writerow(['Id', 'name', 'Email', 'Phone Number', 'Address'])
         for customer in Customer.objects.all():
-            writer.writerow([customer.id, customer.full_name, customer.email, customer.phone_number, customer.address])
+            writer.writerow([customer.id, customer.name, customer.email, customer.address])
     elif format == 'json':
         response = HttpResponse(content_type='application/json')
         data = list(Customer.objects.all().values('name', 'email', 'address'))
@@ -124,8 +124,6 @@ def export_data(request):
         #     customer['phone_number'] = str(customer['phone_number'])
         response.write(json.dumps(data, indent=3))
         response['Content-Disposition'] = 'attachment; filename=customers.json'
-    elif format == 'xlsx':
-        pass
     else:
         response = HttpResponse(status=404)
         response.content = 'Bad request'
